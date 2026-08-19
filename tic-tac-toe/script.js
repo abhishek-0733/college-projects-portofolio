@@ -64,3 +64,18 @@ function checkWinner() {
 
     return false;
 }
+
+// Restart Game
+const restartButton = document.getElementById("restart");
+
+restartButton.addEventListener("click", () => {
+    board = ["", "", "", "", "", "", "", "", ""];
+    currentPlayer = "X";
+    gameActive = true;
+
+    cells.forEach((cell) => {
+        cell.textContent = "";
+    });
+
+    statusText.textContent = "Player X's turn";
+});
