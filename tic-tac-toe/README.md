@@ -35,6 +35,12 @@ This project is a browser-based Tic Tac Toe game for two players. Players take t
 └── script.js
 ```
 
+## Screenshot
+
+![Tic Tac Toe Game - Result 1](screenshots/GameResult1.png)
+
+![Tic Tac Toe Game - Result 2](screenshots/GameResult2.png)
+
 ## How to Run
 
 1. Download or clone this repository.
