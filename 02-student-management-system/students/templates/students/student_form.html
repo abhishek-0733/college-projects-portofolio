@@ -1,0 +1,301 @@
+{% extends "students/base.html" %}
+
+
+{% block title %}
+
+    {% if student %}
+        Edit Student
+    {% else %}
+        Add Student
+    {% endif %}
+
+    | Student Management System
+
+{% endblock %}
+
+
+{% block extra_css %}
+
+<style>
+
+    .form-container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .form-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow:
+            0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-card h1 {
+        margin-top: 0;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 11px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #0d6efd;
+    }
+
+    .error {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .buttons {
+        margin-top: 25px;
+    }
+
+    .buttons button,
+    .buttons a {
+        display: inline-block;
+        padding: 11px 18px;
+        border-radius: 6px;
+        border: none;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: 15px;
+        margin-right: 10px;
+    }
+
+    .save-button {
+        background-color: #198754;
+        color: white;
+    }
+
+    .cancel-button {
+        background-color: #6c757d;
+        color: white;
+    }
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="form-container">
+
+    <div class="form-card">
+
+        <h1>
+
+            {% if student %}
+
+                Edit Student
+
+            {% else %}
+
+                Add New Student
+
+            {% endif %}
+
+        </h1>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <!-- Form Errors -->
+
+            {% if form.non_field_errors %}
+
+                <div class="error">
+
+                    {{ form.non_field_errors }}
+
+                </div>
+
+            {% endif %}
+
+
+            <!-- Name -->
+
+            <div class="form-group">
+
+                <label for="{{ form.name.id_for_label }}">
+                    Student Name
+                </label>
+
+                {{ form.name }}
+
+                {% for error in form.name.errors %}
+
+                    <div class="error">
+                        {{ error }}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- Email -->
+
+            <div class="form-group">
+
+                <label for="{{ form.email.id_for_label }}">
+                    Email Address
+                </label>
+
+                {{ form.email }}
+
+                {% for error in form.email.errors %}
+
+                    <div class="error">
+                        {{ error }}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- Phone -->
+
+            <div class="form-group">
+
+                <label for="{{ form.phone.id_for_label }}">
+                    Phone Number
+                </label>
+
+                {{ form.phone }}
+
+                {% for error in form.phone.errors %}
+
+                    <div class="error">
+                        {{ error }}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- Age -->
+
+            <div class="form-group">
+
+                <label for="{{ form.age.id_for_label }}">
+                    Age
+                </label>
+
+                {{ form.age }}
+
+                {% for error in form.age.errors %}
+
+                    <div class="error">
+                        {{ error }}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- Course -->
+
+            <div class="form-group">
+
+                <label for="{{ form.course.id_for_label }}">
+                    Course
+                </label>
+
+                {{ form.course }}
+
+                {% for error in form.course.errors %}
+
+                    <div class="error">
+                        {{ error }}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- Enrollment Date -->
+
+            <div class="form-group">
+
+                <label for="{{ form.enrollment_date.id_for_label }}">
+                    Enrollment Date
+                </label>
+
+                {{ form.enrollment_date }}
+
+                {% for error in form.enrollment_date.errors %}
+
+                    <div class="error">
+                        {{ error }}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="buttons">
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+
+                    {% if student %}
+                        Save Changes
+                    {% else %}
+                        Add Student
+                    {% endif %}
+
+                </button>
+
+
+                <a
+                    href="{% url 'student_list' %}"
+                    class="cancel-button"
+                >
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,200 @@
+{% extends "students/base.html" %}
+
+
+{% block title %}
+    Student Details | Student Management System
+{% endblock %}
+
+
+{% block extra_css %}
+
+<style>
+
+    .details-container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .details-card {
+        background-color: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow:
+            0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .details-card h1 {
+        margin-top: 0;
+        margin-bottom: 25px;
+    }
+
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+        gap: 20px;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .detail-value {
+        text-align: right;
+    }
+
+    .buttons {
+        margin-top: 25px;
+    }
+
+    .buttons a {
+        display: inline-block;
+        padding: 11px 18px;
+        margin-right: 10px;
+        border-radius: 6px;
+        text-decoration: none;
+    }
+
+    .edit-button {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    .back-button {
+        background-color: #6c757d;
+        color: white;
+    }
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="details-container">
+
+    <div class="details-card">
+
+        <h1>
+            Student Details
+        </h1>
+
+
+        <div class="detail-row">
+
+            <span class="detail-label">
+                Student ID
+            </span>
+
+            <span class="detail-value">
+                {{ student.id }}
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span class="detail-label">
+                Name
+            </span>
+
+            <span class="detail-value">
+                {{ student.name }}
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span class="detail-label">
+                Email
+            </span>
+
+            <span class="detail-value">
+                {{ student.email }}
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span class="detail-label">
+                Phone
+            </span>
+
+            <span class="detail-value">
+                {{ student.phone }}
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span class="detail-label">
+                Age
+            </span>
+
+            <span class="detail-value">
+                {{ student.age }}
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span class="detail-label">
+                Course
+            </span>
+
+            <span class="detail-value">
+                {{ student.course }}
+            </span>
+
+        </div>
+
+
+        <div class="detail-row">
+
+            <span class="detail-label">
+                Enrollment Date
+            </span>
+
+            <span class="detail-value">
+                {{ student.enrollment_date }}
+            </span>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <a
+                href="{% url 'edit_student' student.id %}"
+                class="edit-button"
+            >
+                Edit Student
+            </a>
+
+
+            <a
+                href="{% url 'student_list' %}"
+                class="back-button"
+            >
+                Back to Students
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

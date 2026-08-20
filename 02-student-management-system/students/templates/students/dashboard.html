@@ -1,0 +1,105 @@
+
+{% extends "students/base.html" %}
+
+{% block title %}
+    Dashboard | Student Management System
+{% endblock %}
+
+{% block content %}
+
+    <div class="header">
+
+        <h1>
+            Student Management System
+        </h1>
+
+    </div>
+
+
+    <!-- Statistics -->
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h2>
+                {{ total_students }}
+            </h2>
+
+            <p>
+                Total Students
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h2>
+                {{ total_courses }}
+            </h2>
+
+            <p>
+                Total Courses
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Recent Students -->
+
+    <div class="section">
+
+        <h2>
+            Recently Added Students
+        </h2>
+
+
+        {% for student in recent_students %}
+
+            <div class="student">
+
+                <span>
+                    <strong>
+                        {{ student.name }}
+                    </strong>
+                </span>
+
+                <span>
+                    {{ student.course }}
+                </span>
+
+            </div>
+
+        {% empty %}
+
+            <p>
+                No students available.
+            </p>
+
+        {% endfor %}
+
+
+        <div class="buttons">
+
+            <a
+                href="{% url 'student_list' %}"
+                class="button primary"
+            >
+                View All Students
+            </a>
+
+            <a
+                href="{% url 'add_student' %}"
+                class="button success"
+            >
+                + Add Student
+            </a>
+
+        </div>
+
+    </div>
+
+{% endblock %}
